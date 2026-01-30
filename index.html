@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCOVA Furnitures - Premium Metal & Wood Furniture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FAF8F3;
+            --warm-white: #FFFFFF;
+            --soft-beige: #E8E4DC;
+            --warm-taupe: #C9B8A8;
+            --muted-gold: #B8A085;
+            --charcoal: #3A3632;
+            --deep-walnut: #5C4D42;
+            --accent-sage: #A8B8A0;
+            --accent-terracotta: #C8907A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid rgba(201, 184, 168, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            padding: 1rem 5%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            letter-spacing: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--muted-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--muted-gold);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--muted-gold);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: var(--charcoal);
+            transition: all 0.3s ease;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            transform: translateY(-2px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent-terracotta);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 90vh;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--soft-beige) 100%);
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            z-index: 2;
+            max-width: 600px;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateY(-50%) translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(-50%) translateX(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+        }
+
+        .hero h1 strong {
+            font-weight: 700;
+            color: var(--deep-walnut);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--deep-walnut);
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--charcoal);
+            color: var(--warm-white);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--muted-gold);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translate(-50%, -50%);
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-images {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            width: 45%;
+        }
+
+        .hero-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            border-radius: 20px;
+            background: var(--soft-beige);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-image:nth-child(2) {
+            margin-top: 3rem;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--deep-walnut);
+            margin-bottom: 4rem;
+            opacity: 0.8;
+        }
+
+        /* What We Sell */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .category-card {
+            background: var(--warm-white);
+            border-radius: 30px;
+            padding: 4rem;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--soft-beige);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-sage) 0%, var(--accent-terracotta) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .category-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .category-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .category-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+            position: relative;
+        }
+
+        .category-card p {
+            line-height: 1.8;
+            color: var(--deep-walnut);
+            position: relative;
+        }
+
+        /* Best Sellers */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .product-card {
+            background: var(--warm-white);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--soft-beige);
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: var(--soft-beige);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-terracotta);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .product-info {
+            padding: 2rem;
+        }
+
+        .product-info h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--muted-gold);
+            margin: 1rem 0;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 1rem;
+            background: var(--charcoal);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .add-to-cart:hover {
+            background: var(--muted-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Furniture Guide */
+        .guide-section {
+            background: var(--warm-white);
+            border-radius: 40px;
+            padding: 5rem;
+            margin: 5rem 0;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .guide-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .guide-item:hover {
+            background: var(--cream);
+            transform: translateY(-5px);
+        }
+
+        .guide-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--muted-gold);
+            margin-bottom: 1rem;
+        }
+
+        .guide-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .guide-item p {
+            color: var(--deep-walnut);
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 4rem 5%;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--soft-beige);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--muted-gold);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(250, 248, 243, 0.2);
+            color: var(--soft-beige);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--warm-white);
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--charcoal);
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-terracotta);
+            transform: rotate(90deg);
+        }
+
+        /* Cart */
+        .cart-modal .modal-content {
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--soft-beige);
+            align-items: center;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            background: var(--soft-beige);
+            overflow: hidden;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .quantity-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid var(--soft-beige);
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: var(--charcoal);
+            color: white;
+        }
+
+        .cart-total {
+            padding: 2rem 0;
+            text-align: right;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--charcoal);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .checkout-btn:hover {
+            background: var(--muted-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Products Page */
+        .filters {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: 20px;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--soft-beige);
+            border-radius: 10px;
+            background: var(--cream);
+            transition: all 0.3s ease;
+        }
+
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: var(--muted-gold);
+        }
+
+        /* About/Founders Page */
+        .founders-story {
+            background: var(--warm-white);
+            border-radius: 40px;
+            padding: 5rem;
+            margin-bottom: 4rem;
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .story-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+        }
+
+        .story-text p {
+            line-height: 1.9;
+            color: var(--deep-walnut);
+            margin-bottom: 1.5rem;
+        }
+
+        .story-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            border-radius: 25px;
+            background: var(--soft-beige);
+            overflow: hidden;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .staff-card {
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .staff-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: var(--soft-beige);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            border: 3px solid var(--warm-white);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .staff-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .staff-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .staff-card p {
+            color: var(--muted-gold);
+            font-weight: 500;
+        }
+
+        /* Checkout Page */
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+        }
+
+        .checkout-form {
+            background: var(--warm-white);
+            padding: 3rem;
+            border-radius: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--soft-beige);
+            border-radius: 10px;
+            background: var(--cream);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--muted-gold);
+        }
+
+        .order-summary {
+            background: var(--warm-white);
+            padding: 3rem;
+            border-radius: 25px;
+            height: fit-content;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--soft-beige);
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .payment-option {
+            padding: 1rem;
+            border: 2px solid var(--soft-beige);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-option:hover {
+            border-color: var(--muted-gold);
+            background: var(--cream);
+        }
+
+        .payment-option.selected {
+            border-color: var(--charcoal);
+            background: var(--charcoal);
+            color: white;
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                left: 5%;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-images {
+                width: 50%;
+            }
+
+            .categories-grid,
+            .story-content,
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--warm-white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero {
+                height: auto;
+                padding: 4rem 5%;
+            }
+
+            .hero-content {
+                position: static;
+                transform: none;
+                margin-bottom: 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-images {
+                position: static;
+                transform: none;
+                width: 100%;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('home')" style="cursor: pointer;">ARCOVA</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a onclick="showPage('home')" class="active">HOME</a></li>
+                <li><a onclick="showPage('products')">PRODUCTS</a></li>
+                <li><a onclick="showPage('about')">ABOUT</a></li>
+                <li><a onclick="showPage('checkout')">CHECKOUT</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div class="cart-icon" onclick="openCart()">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Elevate Your <strong>Living Space</strong></h1>
+                <p>Discover our curated collection of premium metal and wooden furniture, crafted with precision and designed for modern living.</p>
+                <a class="cta-button" onclick="showPage('products')" style="cursor: pointer;"><span>EXPLORE COLLECTION</span></a>
+            </div>
+            <div class="hero-images">
+                <div class="hero-image">
+                    <img src="data:image/svg+xml,%3Csvg width='400' height='533' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='533' fill='%23C9B8A8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Cormorant Garamond' font-size='24' fill='%23FFFFFF'%3EModern Chair%3C/text%3E%3C/svg%3E" alt="Modern Chair">
+                </div>
+                <div class="hero-image">
+                    <img src="data:image/svg+xml,%3Csvg width='400' height='533' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='533' fill='%23A8B8A0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Cormorant Garamond' font-size='24' fill='%23FFFFFF'%3EWooden Table%3C/text%3E%3C/svg%3E" alt="Wooden Table">
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Sell -->
+        <section>
+            <h2 class="section-title">What We Craft</h2>
+            <p class="section-subtitle">Experience the perfect blend of form and function</p>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">🔩</div>
+                    <h3>Metal Furniture</h3>
+                    <p>Industrial elegance meets contemporary design. Our metal furniture collection features durable steel and iron pieces with sleek finishes, perfect for modern spaces that demand both style and strength.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🌳</div>
+                    <h3>Wooden Furniture</h3>
+                    <p>Timeless beauty crafted from premium hardwoods. Each piece showcases natural grain patterns and expert joinery, bringing warmth and sophistication to your home with sustainable materials.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Sellers - Metal -->
+        <section>
+            <h2 class="section-title">Metal Bestsellers</h2>
+            <p class="section-subtitle">Our most loved industrial designs</p>
+            <div class="products-grid" id="metalBestsellers"></div>
+        </section>
+
+        <!-- Best Sellers - Wood -->
+        <section>
+            <h2 class="section-title">Wooden Classics</h2>
+            <p class="section-subtitle">Handcrafted with natural elegance</p>
+            <div class="products-grid" id="woodBestsellers"></div>
+        </section>
+
+        <!-- Furniture Guide -->
+        <section class="guide-section">
+            <h2 class="section-title">Finding Your Perfect Piece</h2>
+            <p class="section-subtitle">A simple guide to choosing the right furniture</p>
+            <div class="guide-grid">
+                <div class="guide-item">
+                    <div class="guide-number">01</div>
+                    <h4>Measure Your Space</h4>
+                    <p>Consider room dimensions, doorways, and existing furniture. Create a floor plan to visualize placement.</p>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-number">02</div>
+                    <h4>Define Your Style</h4>
+                    <p>Choose between industrial metal for modern aesthetics or warm wood for classic elegance.</p>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-number">03</div>
+                    <h4>Consider Durability</h4>
+                    <p>Metal offers strength for high-traffic areas, while wood provides timeless beauty with proper care.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Buy -->
+        <section>
+            <h2 class="section-title">Your Journey to Perfect Furniture</h2>
+            <p class="section-subtitle">Simple steps from browse to delivery</p>
+            <div class="guide-grid">
+                <div class="guide-item">
+                    <div class="guide-number">01</div>
+                    <h4>Browse & Select</h4>
+                    <p>Explore our collection and add your favorite pieces to cart with detailed specifications.</p>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-number">02</div>
+                    <h4>Secure Checkout</h4>
+                    <p>Complete your purchase with multiple payment options and instant confirmation.</p>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-number">03</div>
+                    <h4>White Glove Delivery</h4>
+                    <p>Receive your furniture with professional assembly and placement in your desired room.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Products Page -->
+    <div id="productsPage" class="page" style="padding-top: 120px;">
+        <section>
+            <h2 class="section-title">Our Complete Collection</h2>
+            <p class="section-subtitle">Browse all our premium furniture pieces</p>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label>Material</label>
+                    <select id="materialFilter" onchange="filterProducts()">
+                        <option value="all">All Materials</option>
+                        <option value="metal">Metal</option>
+                        <option value="wood">Wood</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Price Range</label>
+                    <select id="priceFilter" onchange="filterProducts()">
+                        <option value="all">All Prices</option>
+                        <option value="5000-10000">₹5,000 - ₹10,000</option>
+                        <option value="10000-20000">₹10,000 - ₹20,000</option>
+                        <option value="20000-30000">₹20,000 - ₹30,000</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Sort By</label>
+                    <select id="sortFilter" onchange="filterProducts()">
+                        <option value="name">Name</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="products-grid" id="allProducts"></div>
+        </section>
+    </div>
+
+    <!-- About/Founders Page -->
+    <div id="aboutPage" class="page" style="padding-top: 120px;">
+        <section class="founders-story">
+            <h2 class="section-title">Our Story</h2>
+            <p class="section-subtitle">Crafting excellence since the beginning</p>
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>The Vision Behind ARCOVA</h2>
+                    <p>In 2018, two childhood friends reconnected over a shared frustration: finding quality furniture that balanced timeless design with modern functionality seemed impossible. What started as late-night sketches and weekend woodworking sessions transformed into ARCOVA.</p>
+                    <p>Our founders, Arjun Mehta and Kavya Sharma, believed that furniture should tell a story—of craftsmanship, sustainability, and the people who use it. They spent years traveling across India, learning from master craftsmen, understanding traditional joinery techniques, and exploring innovative metalworking processes.</p>
+                    <p>Today, ARCOVA stands as a testament to their vision: where industrial precision meets artisanal warmth, creating pieces that don't just furnish spaces but transform them into homes.</p>
+                </div>
+                <div class="story-image">
+                    <img src="data:image/svg+xml,%3Csvg width='600' height='450' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='600' height='450' fill='%23C9B8A8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Cormorant Garamond' font-size='28' fill='%23FFFFFF'%3EFounders Workshop%3C/text%3E%3C/svg%3E" alt="Founders">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">The Spark of Innovation</h2>
+            <p class="section-subtitle">How ARCOVA came to life</p>
+            <div class="guide-section">
+                <p style="text-align: center; line-height: 2; color: var(--deep-walnut); max-width: 800px; margin: 0 auto;">
+                    The idea crystallized during a renovation project when Arjun and Kavya couldn't find furniture that matched their aesthetic vision and quality standards. They realized the market gap: premium furniture was either prohibitively expensive or lacked character. Armed with design expertise and a passion for craftsmanship, they decided to create the brand they wished existed. ARCOVA was born from the simple belief that everyone deserves beautifully made furniture that lasts generations, not just seasons.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Meet Our Team</h2>
+            <p class="section-subtitle">The craftspeople behind every piece</p>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-photo">
+                        <img src="data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='150' cy='150' r='150' fill='%23A8B8A0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Cormorant Garamond' font-size='24' fill='%23FFFFFF'%3EArjun Mehta%3C/text%3E%3C/svg%3E" alt="Arjun Mehta">
+                    </div>
+                    <h4>Arjun Mehta</h4>
+                    <p>Co-Founder & Design Director</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-photo">
+                        <img src="data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='150' cy='150' r='150' fill='%23C8907A'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Cormorant Garamond' font-size='24' fill='%23FFFFFF'%3EKavya Sharma%3C/text%3E%3C/svg%3E" alt="Kavya Sharma">
+                    </div>
+                    <h4>Kavya Sharma</h4>
+                    <p>Co-Founder & Operations Lead</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-photo">
+                        <img src="data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='150' cy='150' r='150' fill='%23B8A085'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Cormorant Garamond' font-size='24' fill='%23FFFFFF'%3ERaj Kumar%3C/text%3E%3C/svg%3E" alt="Raj Kumar">
+                    </div>
+                    <h4>Raj Kumar</h4>
+                    <p>Master Craftsman - Wood</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-photo">
+                        <img src="data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='150' cy='150' r='150' fill='%235C4D42'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Cormorant Garamond' font-size='24' fill='%23FFFFFF'%3EPreeti Nair%3C/text%3E%3C/svg%3E" alt="Preeti Nair">
+                    </div>
+                    <h4>Preeti Nair</h4>
+                    <p>Quality Assurance Manager</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-photo">
+                        <img src="data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='150' cy='150' r='150' fill='%23A8B8A0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Cormorant Garamond' font-size='24' fill='%23FFFFFF'%3ESameer Singh%3C/text%3E%3C/svg%3E" alt="Sameer Singh">
+                    </div>
+                    <h4>Sameer Singh</h4>
+                    <p>Lead Welder - Metal Works</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Checkout Page -->
+    <div id="checkoutPage" class="page" style="padding-top: 120px;">
+        <section>
+            <h2 class="section-title">Complete Your Order</h2>
+            <p class="section-subtitle">One step away from your dream furniture</p>
+            
+            <div class="checkout-container">
+                <div class="checkout-form">
+                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 2rem;">Delivery Information</h3>
+                    <form id="checkoutForm">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" id="customerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" id="customerPhone" required pattern="[0-9]{10}">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" id="customerEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Delivery Address *</label>
+                            <textarea id="customerAddress" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>City *</label>
+                            <input type="text" id="customerCity" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Pincode *</label>
+                            <input type="text" id="customerPincode" required pattern="[0-9]{6}">
+                        </div>
+                        <div class="form-group">
+                            <label>Special Instructions (Optional)</label>
+                            <textarea id="specialInstructions" rows="2"></textarea>
+                        </div>
+                    </form>
+
+                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin: 2rem 0;">Payment Method</h3>
+                    <div class="payment-methods">
+                        <div class="payment-option selected" onclick="selectPayment('cod')">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💵</div>
+                            <div style="font-size: 0.9rem;">Cash on Delivery</div>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment('upi')">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📱</div>
+                            <div style="font-size: 0.9rem;">UPI</div>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment('card')">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💳</div>
+                            <div style="font-size: 0.9rem;">Card</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-summary">
+                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 1.5rem;">Order Summary</h3>
+                    <div id="checkoutItems"></div>
+                    <div class="summary-item">
+                        <span>Subtotal</span>
+                        <span id="subtotal">₹0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Delivery</span>
+                        <span>₹500</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="finalTotal">₹0</span>
+                    </div>
+                    <button class="checkout-btn" onclick="placeOrder()">PLACE ORDER</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>ARCOVA</h4>
+                <p style="color: var(--soft-beige); line-height: 1.8; margin-top: 1rem;">Crafting premium furniture that transforms houses into homes.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a onclick="showPage('home')" style="cursor: pointer;">Home</a></li>
+                    <li><a onclick="showPage('products')" style="cursor: pointer;">Products</a></li>
+                    <li><a onclick="showPage('about')" style="cursor: pointer;">About Us</a></li>
+                    <li><a onclick="showPage('checkout')" style="cursor: pointer;">Checkout</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Care</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ARCOVA Furnitures. All rights reserved. | Designed with care for your home.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal cart-modal" id="cartModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeCart()">&times;</span>
+            <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 2rem;">Your Cart</h3>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                Total: <span id="cartTotal">₹0</span>
+            </div>
+            <button class="checkout-btn" onclick="proceedToCheckout()">PROCEED TO CHECKOUT</button>
+        </div>
+    </div>
+
+    <script>
+        // Product Database
+        const products = {
+            metal: [
+                { id: 1, name: 'Industrial Steel Chair', price: 12000, material: 'metal', bestseller: true },
+                { id: 2, name: 'Modern Metal Desk', price: 18000, material: 'metal', bestseller: true },
+                { id: 3, name: 'Minimalist Iron Shelf', price: 9500, material: 'metal', bestseller: true },
+                { id: 4, name: 'Contemporary Metal Bed Frame', price: 25000, material: 'metal', bestseller: false },
+                { id: 5, name: 'Steel Coffee Table', price: 15000, material: 'metal', bestseller: false },
+                { id: 6, name: 'Metal Bar Stool Set', price: 22000, material: 'metal', bestseller: false },
+                { id: 7, name: 'Industrial Bookcase', price: 19500, material: 'metal', bestseller: false },
+                { id: 8, name: 'Metal TV Stand', price: 17000, material: 'metal', bestseller: false },
+                { id: 9, name: 'Modern Metal Cabinet', price: 28000, material: 'metal', bestseller: false },
+                { id: 10, name: 'Steel Dining Table', price: 30000, material: 'metal', bestseller: false }
+            ],
+            wood: [
+                { id: 11, name: 'Classic Oak Dining Table', price: 28000, material: 'wood', bestseller: true },
+                { id: 12, name: 'Walnut Bookshelf', price: 16500, material: 'wood', bestseller: true },
+                { id: 13, name: 'Teak Coffee Table', price: 14000, material: 'wood', bestseller: true },
+                { id: 14, name: 'Mahogany Bed Frame', price: 29000, material: 'wood', bestseller: false },
+                { id: 15, name: 'Pine Study Desk', price: 13500, material: 'wood', bestseller: false },
+                { id: 16, name: 'Wooden Wardrobe', price: 27500, material: 'wood', bestseller: false },
+                { id: 17, name: 'Oak TV Console', price: 18500, material: 'wood', bestseller: false },
+                { id: 18, name: 'Sheesham Side Table', price: 8500, material: 'wood', bestseller: false },
+                { id: 19, name: 'Wooden Bar Cabinet', price: 24000, material: 'wood', bestseller: false },
+                { id: 20, name: 'Teak Lounge Chair', price: 21000, material: 'wood', bestseller: false }
+            ]
+        };
+
+        let cart = [];
+        let selectedPayment = 'cod';
+
+        // Initialize
+        window.onload = () => {
+            displayBestsellers();
+            displayAllProducts();
+            updateCheckoutSummary();
+        };
+
+        // Navigation
+        window.onscroll = () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        };
+
+        function showPage(page) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(page + 'Page').classList.add('active');
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to current nav item
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const pageMap = { 'home': 0, 'products': 1, 'about': 2, 'checkout': 3 };
+            if (pageMap[page] !== undefined) {
+                navLinks[pageMap[page]].classList.add('active');
+            }
+            
+            // Close mobile menu if open
+            document.getElementById('navLinks').classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Display Products
+        function displayBestsellers() {
+            const metalBestsellers = products.metal.filter(p => p.bestseller);
+            const woodBestsellers = products.wood.filter(p => p.bestseller);
+            
+            document.getElementById('metalBestsellers').innerHTML = metalBestsellers.map(createProductCard).join('');
+            document.getElementById('woodBestsellers').innerHTML = woodBestsellers.map(createProductCard).join('');
+        }
+
+        function displayAllProducts() {
+            const allProducts = [...products.metal, ...products.wood];
+            document.getElementById('allProducts').innerHTML = allProducts.map(createProductCard).join('');
+        }
+
+        function createProductCard(product) {
+            const color = product.material === 'metal' ? '#5C4D42' : '#A8B8A0';
+            return `
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='400' fill='${encodeURIComponent(color)}'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Cormorant Garamond' font-size='20' fill='%23FFFFFF'%3E${encodeURIComponent(product.name)}%3C/text%3E%3C/svg%3E" alt="${product.name}">
+                        ${product.bestseller ? '<div class="product-tag">BESTSELLER</div>' : ''}
+                    </div>
+                    <div class="product-info">
+                        <h4>${product.name}</h4>
+                        <p style="color: var(--deep-walnut); text-transform: capitalize;">${product.material}</p>
+                        <div class="product-price">₹${product.price.toLocaleString('en-IN')}</div>
+                        <button class="add-to-cart" onclick="addToCart(${product.id})">ADD TO CART</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Filter Products
+        function filterProducts() {
+            const material = document.getElementById('materialFilter').value;
+            const priceRange = document.getElementById('priceFilter').value;
+            const sort = document.getElementById('sortFilter').value;
+
+            let filtered = [...products.metal, ...products.wood];
+
+            // Filter by material
+            if (material !== 'all') {
+                filtered = filtered.filter(p => p.material === material);
+            }
+
+            // Filter by price
+            if (priceRange !== 'all') {
+                const [min, max] = priceRange.split('-').map(Number);
+                filtered = filtered.filter(p => p.price >= min && p.price <= max);
+            }
+
+            // Sort
+            if (sort === 'price-low') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sort === 'price-high') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else {
+                filtered.sort((a, b) => a.name.localeCompare(b.name));
+            }
+
+            document.getElementById('allProducts').innerHTML = filtered.map(createProductCard).join('');
+        }
+
+        // Cart Functions
+        function addToCart(productId) {
+            const allProducts = [...products.metal, ...products.wood];
+            const product = allProducts.find(p => p.id === productId);
+            
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            updateCartCount();
+            showNotification('Added to cart!');
+        }
+
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        function openCart() {
+            updateCartDisplay();
+            document.getElementById('cartModal').classList.add('active');
+        }
+
+        function closeCart() {
+            document.getElementById('cartModal').classList.remove('active');
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; padding: 2rem; color: var(--deep-walnut);">Your cart is empty</p>';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img src="data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='80' height='80' fill='%23C9B8A8'/%3E%3C/svg%3E" alt="${item.name}">
+                        </div>
+                        <div class="cart-item-info">
+                            <h5>${item.name}</h5>
+                            <p style="color: var(--muted-gold);">₹${item.price.toLocaleString('en-IN')}</p>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                                <span>${item.quantity}</span>
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                                <button class="quantity-btn" onclick="removeFromCart(${item.id})" style="margin-left: auto;">×</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cartTotal').textContent = '₹' + total.toLocaleString('en-IN');
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartDisplay();
+                    updateCartCount();
+                }
+            }
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartDisplay();
+            updateCartCount();
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            closeCart();
+            showPage('checkout');
+            updateCheckoutSummary();
+        }
+
+        // Checkout Functions
+        function updateCheckoutSummary() {
+            const checkoutItems = document.getElementById('checkoutItems');
+            checkoutItems.innerHTML = cart.map(item => `
+                <div class="summary-item">
+                    <span>${item.name} × ${item.quantity}</span>
+                    <span>₹${(item.price * item.quantity).toLocaleString('en-IN')}</span>
+                </div>
+            `).join('');
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('subtotal').textContent = '₹' + subtotal.toLocaleString('en-IN');
+            document.getElementById('finalTotal').textContent = '₹' + (subtotal + 500).toLocaleString('en-IN');
+        }
+
+        function selectPayment(method) {
+            selectedPayment = method;
+            document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
+            event.target.closest('.payment-option').classList.add('selected');
+        }
+
+        function placeOrder() {
+            const form = document.getElementById('checkoutForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const email = document.getElementById('customerEmail').value;
+            const address = document.getElementById('customerAddress').value;
+            const city = document.getElementById('customerCity').value;
+            const pincode = document.getElementById('customerPincode').value;
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = subtotal + 500;
+
+            // Generate receipt
+            const receipt = generateReceipt(name, phone, email, address, city, pincode, total);
+            
+            // Share via WhatsApp
+            const whatsappMessage = encodeURIComponent(receipt);
+            const whatsappURL = `https://wa.me/${phone}?text=${whatsappMessage}`;
+            
+            // Show confirmation
+            alert('Order placed successfully! Your receipt will be sent to WhatsApp.');
+            
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+            
+            // Reset cart and form
+            cart = [];
+            updateCartCount();
+            form.reset();
+            showPage('home');
+        }
+
+        function generateReceipt(name, phone, email, address, city, pincode, total) {
+            const orderNumber = 'ARC' + Date.now().toString().slice(-8);
+            const date = new Date().toLocaleDateString('en-IN');
+            
+            let receipt = `🪑 ARCOVA FURNITURES - ORDER RECEIPT\n\n`;
+            receipt += `Order #: ${orderNumber}\n`;
+            receipt += `Date: ${date}\n\n`;
+            receipt += `📦 CUSTOMER DETAILS\n`;
+            receipt += `Name: ${name}\n`;
+            receipt += `Phone: ${phone}\n`;
+            receipt += `Email: ${email}\n`;
+            receipt += `Address: ${address}, ${city} - ${pincode}\n\n`;
+            receipt += `🛋️ ORDER ITEMS\n`;
+            
+            cart.forEach(item => {
+                receipt += `${item.name} × ${item.quantity}\n`;
+                receipt += `₹${(item.price * item.quantity).toLocaleString('en-IN')}\n\n`;
+            });
+            
+            receipt += `💰 PAYMENT SUMMARY\n`;
+            receipt += `Subtotal: ₹${(total - 500).toLocaleString('en-IN')}\n`;
+            receipt += `Delivery: ₹500\n`;
+            receipt += `Total: ₹${total.toLocaleString('en-IN')}\n\n`;
+            receipt += `Payment Method: ${selectedPayment.toUpperCase()}\n\n`;
+            receipt += `Thank you for choosing ARCOVA! 🙏\n`;
+            receipt += `We'll contact you soon for delivery.\n\n`;
+            receipt += `Visit: www.arcova.com`;
+            
+            return receipt;
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: var(--charcoal);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                z-index: 3000;
+                animation: slideIn 0.3s ease;
+            `;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                notification.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
